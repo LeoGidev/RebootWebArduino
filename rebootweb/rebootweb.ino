@@ -64,6 +64,108 @@ server.begin();           // se pone a ver si hay clientes
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  EthernetClient client = server.available(); 
+ 
+ 
+    if (client) {  // se fija si hay cliente
+        boolean currentLineIsBlank = true;
+        while (client.connected()) {
+            if (client.available()) {  
+                char c = client.read(); 
+                if (req_index < (REQ_BUF_SZ - 1)) {
+                    HTTP_req[req_index] = c;        
+                    req_index++;
+                }//lee y almacena los caracteres de la solictud http del cliente
+               
+                if (c == '\n' && currentLineIsBlank) {
+                    //busca un /n en la solictud del cliente
+                    client.println("HTTP/1.1 200 OK");
+                    //le envia una mensaje al cliente que dice "http/1.1200 ok" estableciendo asi la coneccion
+                 
+                   Serial.println("///////////////////////") ;
+                   Serial.println(HTTP_req);
+                         if (StrContains(HTTP_req, "ajax_inputs")) { //revisa si hay una solictud ajax
+                        // Envia el encabezado HTTP 
+                        client.println("Content-Type: text/xml");
+                        client.println("Connection: keep-alive");
+                        client.println();
+                        //toma los valores recibidos del cliente con la funcion rebooteo()
+                       XML_response(client);
+                       
 
+                       }
+                         else if (StrContains(HTTP_req, "REBOOTER")) { //revisa si hay una solictud REBOOT
+                        // Envia el encabezado HTTP 
+                       
+                        client.println("Content-Type: text/xml");
+                        client.println("Connection: keep-alive");
+                        client.println();
+                        //toma los valores recibidos del cliente con la funcion rebooteo()
+                         
+                        Rebooteo();
+                        XML_response(client);
+                        }
+                                 
+                    
+                                 
+                         else if (StrContains(HTTP_req, "GET / ")|| StrContains(HTTP_req, "GET /index.htm")) {
+                        client.println("HTTP/1.1 200 OK");
+                        client.println("Content-Type: text/html");
+                        client.println("Connnection: close");
+                        client.println();
+                        webFile = SD.open("index.htm");        // envia la pagina web de la sd al cliente
+                       
+                           }
+                          
+                        
+
+                         
+                     
+                     else if (StrContains(HTTP_req, "GET /pic.jpg")) {
+                        webFile = SD.open("pic.jpg");
+                        if (webFile) {
+                            client.println("HTTP/1.1 200 OK");
+                            client.println();}
+                            }
+                    
+                    
+
+                  
+             
+       /////////////////////////////////////////////
+                        if (webFile) {
+                        while(webFile.available()) {
+                        client.write(webFile.read()); 
+                            }
+                            webFile.close();
+                            
+                            
+                        }
+                    
+                    
+                    
+                         //una vez acabada la comunicacion reseta el buffer 
+                    req_index = 0;
+                    StrClear(HTTP_req, REQ_BUF_SZ);
+                    break;
+                    
+                    
+                }
+                
+                if (c == '\n') {
+                    currentLineIsBlank = true;
+                } 
+                else if (c != '\r') {
+                    currentLineIsBlank = false;
+                }
+            } 
+        } 
+             
+        client.stop(); //cierra la coneccion
+        client.flush();
+        delay(100); 
+    
+        
+    } 
+   
 }
