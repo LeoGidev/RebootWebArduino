@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta name='MobileOptimized' content='width' />
-<meta http-equiv='Refresh' content='180;URL=index.htm' />
+<meta http-equiv='Refresh' content='180;URL=index.html' />
 <html>
     <head>
         <title>Reboot Web</title>
@@ -33,7 +33,7 @@
         font-weight:bolder;
         width:350px;
         position:relative;
-        top:-50px;
+       
         }
         
         
@@ -50,7 +50,7 @@
         padding: 20px 20px 20px 20px;
         border-radius:7px 7px 7px 7px;
         color:white;
-        border:2px solid black;
+       
         }
         .Boton:hover{
         background:#333DA0;
@@ -87,153 +87,11 @@
           z-index: 3;
           position:relative;
         }
-        #myProgressB {
-          position: relative;
-          width: 100%;
-          height: 30px;
-          background-color: #ddd;
-        }
+    
+
+      
         
-        #myBarB {
-          position: absolute;
-          width: 1%;
-          height: 100%;
-          background-color: #4CAF50;
-          z-index: 2;
-        }
-        #labelB {
-          text-align: center;
-          line-height: 30px;
-          color: white;
-          z-index: 3;
-          position:relative;
-        }
-        #myProgressC {
-          position: relative;
-          width: 100%;
-          height: 30px;
-          background-color: #ddd;
-        }
-        
-        #myBarC {
-          position: absolute;
-          width: 1%;
-          height: 100%;
-          background-color: #4CAF50;
-          z-index: 2;
-        }
-        #labelC {
-          text-align: center;
-          line-height: 30px;
-          color: white;
-          z-index: 3;
-          position:relative;
-        }
-        #myProgressD {
-          position: relative;
-          width: 100%;
-          height: 30px;
-          background-color: #ddd;
-        }
-        
-        #myBarD {
-          position: absolute;
-          width: 1%;
-          height: 100%;
-          background-color: #4CAF50;
-          z-index: 2;
-        }
-        #labelD {
-          text-align: center;
-          line-height: 30px;
-          color: white;
-          z-index: 3;
-          position:relative;
-        }
-        #myProgressE {
-          position: relative;
-          width: 100%;
-          height: 30px;
-          background-color: #ddd;
-        }
-        
-        #myBarE {
-          position: absolute;
-          width: 1%;
-          height: 100%;
-          background-color: #4CAF50;
-          z-index: 2;
-        }
-        #labelE {
-          text-align: center;
-          line-height: 30px;
-          color: white;
-          z-index: 3;
-          position:relative;
-        }
-        #myProgressF {
-          position: relative;
-          width: 100%;
-          height: 30px;
-          background-color: #ddd;
-        }
-        
-        #myBarF {
-          position: absolute;
-          width: 1%;
-          height: 100%;
-          background-color: #4CAF50;
-          z-index: 2;
-        }
-        #labelF {
-          text-align: center;
-          line-height: 30px;
-          color: white;
-          z-index: 3;
-          position:relative;
-        }
-        #myProgressG {
-          position: relative;
-          width: 100%;
-          height: 30px;
-          background-color: #ddd;
-        }
-        
-        #myBarG {
-          position: absolute;
-          width: 1%;
-          height: 100%;
-          background-color: #4CAF50;
-          z-index: 2;
-        }
-        #labelG {
-          text-align: center;
-          line-height: 30px;
-          color: white;
-          z-index: 3;
-          position:relative;
-        }
-        #myProgressH {
-          position: relative;
-          width: 100%;
-          height: 30px;
-          background-color: #ddd;
-        }
-        
-        #myBarH {
-          position: absolute;
-          width: 1%;
-          height: 100%;
-          background-color: #4CAF50;
-          z-index: 2;
-        }
-        #labelH {
-          text-align: center;
-          line-height: 30px;
-          color: white;
-          z-index: 3;
-          position:relative;
-        }
+    
         </style>
         <script>
             strRA = "";
@@ -279,27 +137,7 @@ function ValoresAjax()
                      if (xB==1 && tigB==1){
    alert("Reboot en EdgeB realizado con exito");tigB=0; 
    mostrarbotones();}
-   else if(xB==0 && tigB==1){
-   alert("Password incorrecto, Reboot en EdgeB abortado");tigB=0;
-   mostrarbotones();}
-                       if(this.responseXML.getElementsByTagName('ValuC')[0].childNodes[0].nodeValue === "checked"){
-                     xC=1;}else{ xC=0;}
-                     
-                     if (xC==1 && tigC==1){
-   alert("Reboot en EdgeC realizado con exito");tigC=0; 
-   mostrarbotones();}
-   else if(xC==0 && tigC==1){
-   alert("Password incorrecto, Reboot en EdgeC abortado");tigC=0;
-   mostrarbotones();}
-                      if(this.responseXML.getElementsByTagName('ValuD')[0].childNodes[0].nodeValue === "checked"){
-                     xD=1;}else{ xD=0;}
-                     
-                     if (xD==1 && tigD==1){
-   alert("Reboot en EdgeD realizado con exito");tigD=0;
-    mostrarbotones();	   }
-   else if(xD==0 && tigD==1){
-   alert("Password incorrecto, Reboot en EdgeD abortado");tigD=0;
-   mostrarbotones();}						
+   					
 
                     
                    
@@ -476,3 +314,33 @@ document.getElementById('BotD').hidden = true;
 }
 </script>
 </head>
+
+<body onload="ValoresAjax()">
+    <div width="95%" align=center><h1 >RebootWeb<img src="pic.png"/></h1> </div>
+
+
+    
+<table align=center width="95%" border =0>
+   
+<tr >
+<td width="25%"  class="items">Equipo A</td>
+</tr>
+    
+<tr>
+<td> <a onclick="RebootA();move();" id="BotA" class="Boton">REBOOT</a>
+<div hidden="hidden" id="myProgress">
+<div id="myBar"></div>
+<div id="label"></div>
+</div>
+</td>
+</tr>
+
+<tr>
+<td><p><a href="">enlace</a></p></td>
+</tr>
+
+</table>
+
+</body>
+<footer class="foot"> Realizado por Departamento de Electronica 2018</footer>
+</html>
